@@ -26,6 +26,20 @@ make sure to have 246 colors in `.bash_profile`
 export TERM=screen-256color
 ```
 
+install the right python environment:
+```bash
+# python 3
+pyenv install 3.9.7
+pyenv virtualenv 3.9.7 neovim3
+pyenv activate neovim3
+pip install pynvim
+# python 2
+pyenv install 2.7.18
+pyenv virtualenv 2.7.18 neovim2
+pyenv activate neovim2
+pip install pynvim
+```
+
 install the right nerd fonts
 ```bash
  brew install --cask font-hack-nerd-font
