@@ -31,7 +31,13 @@ install the right nerd fonts
  brew install --cask font-hack-nerd-font
  ```
 
- Make sure to have the right config in iterm. See screenshot.
+ Make sure to have the right config in iterm. See screenshot:
+ ![alt text](./iterm2_fonts.png "Iterm fonts")
+
+
+ Make sure to remap the meta key. See screenshot:
+ ![alt text](./iterm2_meta.png "Iterm fonts")
+
 
 
 make an alias for nvim
