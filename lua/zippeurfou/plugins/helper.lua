@@ -32,5 +32,13 @@ return {
        require('Comment').setup()
     end,
   },
+  {"kkoomen/vim-doge",
+    build = function()
+    vim.cmd(':call doge#install()')
+    end,
+    config = function()
+    vim.g.doge_mapping = '<Leader>d'
+    end,
+  }
 }
 
