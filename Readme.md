@@ -13,10 +13,10 @@ install pyenv-pyright
  git clone https://github.com/alefpereira/pyenv-pyright.git $(pyenv root)/plugins/pyenv-pyright
  ```
 
- install neovim
+ install neovim and ripgrep
 
  ```bash
- brew install neovim
+ brew install neovim ripgrep # Need ripgrep for telescope
  ```
 
 make sure to have 246 colors in `.bash_profile`
