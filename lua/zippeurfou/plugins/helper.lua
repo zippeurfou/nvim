@@ -15,6 +15,11 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>p"] = { name = "+paste" },
         ["<leader>s"] = { name = "+showdiagnostic" },
+        ["<leader><leader>"] = { name = "+telescope" },
+        ["<leader><leader>f"] = { name = "+find" },
+        ["<leader><leader>s"] = { name = "+search" },
+        ["<leader><leader>g"] = { name = "+git" },
+        ["<leader><leader>c"] = { name = "+colorscheme" },
       })
   end,
   },
@@ -23,7 +28,7 @@ return {
   -- strip whitespace
   {'echasnovski/mini.trailspace',
   config = function()
-    require('mini.trailspace').setup()
+    require('mini.trailspace').setup({})
   end,
   },
   -- comment with gcc and co
@@ -39,6 +44,8 @@ return {
     config = function()
     vim.g.doge_mapping = '<Leader>d'
     end,
-  }
+  },
+  {"iamcco/markdown-preview.nvim",
+  config = function() vim.fn["mkdp#util#install"]() end,},
 }
 
