@@ -69,7 +69,7 @@ return {
         --     },
         --   },
         -- },
-        sumneko_lua = {
+        lua_ls = {
           settings = {
             Lua = {
               diagnostics = {
@@ -510,7 +510,7 @@ return {
             vsplit = '<C-c>v',
             split = '<C-c>i',
             tabe = '<C-c>t',
-            quit = 'q',
+            quit =  'q',
             close = '<Esc>',
           }
         }

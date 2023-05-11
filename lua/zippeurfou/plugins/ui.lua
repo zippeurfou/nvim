@@ -29,6 +29,15 @@ return {
       })
     end,
   },
+   {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    opts = function()
+      return {
+        sections = {  lualine_c = { 'buffers' } }
+      }
+    end,
+    },
   -- {
   --   -- "ellisonleao/gruvbox.nvim",
   --   "morhetz/gruvbox",
