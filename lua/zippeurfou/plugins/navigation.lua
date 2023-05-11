@@ -41,7 +41,7 @@ return {
       })
     end,
   },
-  {"qpkorr/vim-bufkill"},
+  { "qpkorr/vim-bufkill", },
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -117,5 +117,35 @@ return {
         },
       },
     },
+  },
+  {
+    'hkupty/iron.nvim',
+    config = function()
+      local iron = require("iron.core")
+      iron.setup {
+        config = {
+          scratch_repl = true,
+          -- Automatically closes the repl window on process end
+          close_window_on_exit = true,
+          repl_open_cmd = "horizontal 10 split",
+          repl_definition = {
+            sh = { command = { "zsh" } },
+            python = require("iron.fts.python").ipython
+          },
+        },
+        should_map_plug = true,
+        keymaps = {
+          send_motion = "<leader>iss",
+          visual_send = "<leader>iss",
+          send_line = "<leader>isl",
+          send_file = "<leader>isf",
+          -- repeat_cmd = "<leader>is.",
+          cr = "<leader>is<cr>",
+          interrupt = "<leader>isi",
+          exit = "<leader>isq",
+          clear = "<leader>isl",
+        },
+      }
+    end,
   },
 }

@@ -18,4 +18,7 @@ map("n", "<leader>Y", [["+Y]],'Copy to Clipboard (CTR+C) whole line')
 map({"n", "v"}, "<leader>d", [["_d]],'Delete to Buffer ?')
 map("n", "<leader>t", ':NeoTreeFocusToggle<cr>','Open Explorer Tree')
 map("n", "<leader>n", 'o-<space><space><ESC>"=strftime("%m/%d/%y")<CR>P i:<space>','Add Bragg entry')
-
+map('n', '<leader>it', '<cmd>IronRepl<cr>','[I]ron [T]oggle')
+map('n', '<leader>ir', '<cmd>IronRestart<cr>','[I]ron [R]estart')
+map('n', '<leader>if', '<cmd>IronFocus<cr>','[I]ron [F]ocus')
+map('n', '<leader>ih', '<cmd>IronHide<cr>','[I]ron [H]ide')

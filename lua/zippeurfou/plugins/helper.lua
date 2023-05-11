@@ -12,6 +12,8 @@ return {
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["K"] = { name = "+hoverdoc" },
+        ["<leader>i"] = { name = "+iron" },
+        ["<leader>is"] = { name = "+send" },
         ["<leader>c"] = { name = "+code" },
         ["<leader>p"] = { name = "+paste" },
         ["<leader>s"] = { name = "+showdiagnostic" },
