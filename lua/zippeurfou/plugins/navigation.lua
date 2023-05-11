@@ -124,6 +124,7 @@ return {
       local iron = require("iron.core")
       iron.setup {
         config = {
+          highlight_last = false,
           scratch_repl = true,
           -- Automatically closes the repl window on process end
           close_window_on_exit = true,
@@ -145,6 +146,8 @@ return {
           exit = "<leader>isq",
           clear = "<leader>isl",
         },
+        highlight = false,
+        ignore_blank_lines = true, -- ignore blank lines when sending visual select lines
       }
     end,
   },
