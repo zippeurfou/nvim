@@ -517,7 +517,7 @@ return {
       )
       -- saga.init_lsp_saga()
     end,
-    dependices = { {'nvim-tree/nvim-web-devicons'} }
+    dependencies = { {'nvim-tree/nvim-web-devicons'} }
   },
    {
     "folke/trouble.nvim",

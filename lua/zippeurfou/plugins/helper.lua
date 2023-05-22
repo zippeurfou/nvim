@@ -17,6 +17,7 @@ return {
         ["<leader>c"] = { name = "+code" },
         ["<leader>p"] = { name = "+paste" },
         ["<leader>s"] = { name = "+showdiagnostic" },
+        ["<leader>z"] = { name = "+zen" },
         ["<leader><leader>"] = { name = "+telescope" },
         ["<leader><leader>f"] = { name = "+find" },
         ["<leader><leader>s"] = { name = "+search" },

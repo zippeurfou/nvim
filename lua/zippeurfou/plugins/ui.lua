@@ -16,6 +16,12 @@ return {
       )
     end,
   },
+  { 'Pocco81/true-zen.nvim',
+    config = function()
+     require("true-zen").setup {
+    }
+    end,
+  },
   { 'lukas-reineke/indent-blankline.nvim',
     config = function()
       -- vim.g.indent_blankline_use_treesitter_scope = true
@@ -26,6 +32,14 @@ return {
         show_trailing_blankline_indent = false,
         -- space_char_blankline = " ",
         use_treesitter = false,
+      })
+    end,
+  },
+  { 'jbyuki/nabla.nvim',
+    config = function()
+      require "nabla".enable_virt({
+        autogen = true, -- auto-regenerate ASCII art when exiting insert mode
+        silent = true, -- silents error messages
       })
     end,
   },
