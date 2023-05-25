@@ -53,6 +53,9 @@ install the right nerd fonts
  ![alt text](./iterm2_meta.png "Iterm fonts")
 
 
+Alternatively install [MesloLGS NF fonts](https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k).
+It is pretty nice with tokyonight themes.
+
 
 make an alias for nvim
 
