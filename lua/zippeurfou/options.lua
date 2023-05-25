@@ -36,7 +36,7 @@ o.showmode=true
 o.title=true
 --Show the (partial) command as it’s being typed
 o.showcmd=true
-o.signcolumn = "auto:4" -- sign column
+o.signcolumn = "yes:4" -- sign column
 o.termguicolors = true -- pretty colors
 o.timeoutlen = 300 -- Reduce timeout for whichkeys
 -- vim.cmd[[colorscheme railscasts]] -- Set my color scheme

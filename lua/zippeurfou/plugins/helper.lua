@@ -1,8 +1,8 @@
 return {
   -- show help when typing stuff. Help me :)
-  {"folke/which-key.nvim",
-  config = function()
-    require("which-key").setup()
+  { "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup()
       local wk = require("which-key")
       wk.register({
         mode = { "n", "v" },
@@ -12,6 +12,7 @@ return {
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["K"] = { name = "+hoverdoc" },
+        ["<leader>D"] = { name = "+debug" },
         ["<leader>i"] = { name = "+iron" },
         ["<leader>is"] = { name = "+send" },
         ["<leader>c"] = { name = "+code" },
@@ -24,31 +25,30 @@ return {
         ["<leader>Tg"] = { name = "+git" },
         ["<leader>Tc"] = { name = "+colorscheme" },
       })
-  end,
+    end,
   },
   -- show colors when typing :ColorizerAttachToBuffer
-  {"norcalli/nvim-colorizer.lua"},
+  { "norcalli/nvim-colorizer.lua" },
   -- strip whitespace
-  {'echasnovski/mini.trailspace',
-  config = function()
-    require('mini.trailspace').setup({})
-  end,
+  { 'echasnovski/mini.trailspace',
+    config = function()
+      require('mini.trailspace').setup({})
+    end,
   },
   -- comment with gcc and co
-    {'numToStr/Comment.nvim',
+  { 'numToStr/Comment.nvim',
     config = function()
-       require('Comment').setup()
+      require('Comment').setup()
     end,
   },
-  {"kkoomen/vim-doge",
+  { "kkoomen/vim-doge",
     build = function()
-    vim.cmd(':call doge#install()')
+      vim.cmd(':call doge#install()')
     end,
     config = function()
-    vim.g.doge_mapping = '<Leader>d'
+      vim.g.doge_mapping = '<Leader>h'
     end,
   },
-  {"iamcco/markdown-preview.nvim",
-  config = function() vim.fn["mkdp#util#install"]() end,},
+  { "iamcco/markdown-preview.nvim",
+    config = function() vim.fn["mkdp#util#install"]() end, },
 }
-
