@@ -39,7 +39,17 @@ return {
                 useLibraryCodeForTypes = true,
                 autoImportCompletions = true,
                 typeCheckingMode = "basic",
-                stubPath= "",
+                stubPath = "",
+                inlayHints = {
+                  variableTypes = true,
+                  functionReturnTypes = true,
+                },
+                -- diagnosticSeverityOverrides = {
+                --   reportMissingTypeStubs = "none",
+                --   reportUnusedExpression = "information",
+                --   reportPrivateUsage = "warning",
+                --   reportUnknownMemberType = "none",
+                -- },
               }
             },
           }
@@ -148,7 +158,7 @@ return {
   {
     "jose-elias-alvarez/null-ls.nvim",
     event = "BufReadPre",
-    keys = { {"<leader>f",":lua vim.lsp.buf.format { async = true }<cr>", desc="Format"}},
+    keys = { { "<leader>f", ":lua vim.lsp.buf.format { async = true }<cr>", desc = "Format" } },
     dependencies = { "mason.nvim" },
     opts = function()
       local nls = require("null-ls")
@@ -228,7 +238,7 @@ return {
 
       local function handle_tab(fallback)
         if cmp.visible() then cmp.select_next_item()
-        elseif luasnip.expandable() then  luasnip.expand()
+        elseif luasnip.expandable() then luasnip.expand()
         elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
         elseif check_backspace() then fallback()
         else return false
@@ -285,12 +295,12 @@ return {
           fallback()
         end
       end
-      local merge = function(a, b)
+      local merge           = function(a, b)
         return vim.tbl_deep_extend('force', {}, a, b)
       end
-      local lspkind = require('lspkind')
-      local ts_utils  = require("nvim-treesitter.ts_utils")
-      local source_mapping = {
+      local lspkind         = require('lspkind')
+      local ts_utils        = require("nvim-treesitter.ts_utils")
+      local source_mapping  = {
         nvim_lsp = "[Lsp]",
         luasnip = "[Snip]",
         buffer = "[Buffer]",
@@ -312,7 +322,7 @@ return {
               vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind)
               local menu = source_mapping[entry.source.name]
               vim_item.menu = menu
-              vim_item.dup =0
+              vim_item.dup = 0
               return vim_item
             end,
           },
@@ -323,7 +333,7 @@ return {
             luasnip.lsp_expand(args.body) -- For `luasnip` users.
           end,
         },
-        completion = {autocomplete = false},
+        completion = { autocomplete = false },
         window = {
           completion = cmp.config.window.bordered(),
           documentation = merge(
@@ -362,9 +372,13 @@ return {
             hl_group = "LspCodeLens",
           },
         },
+        enabled = function()
+          return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+              or require("cmp_dap").is_dap_buffer()
+        end,
         sources = cmp.config.sources({
           { name = "nvim_lsp", max_item_count = 15,
-            entry_filter= function (entry,context)
+            entry_filter = function(entry, context)
               -- local log = function(message)
               --   local log_file_path = './debug.txt'
               --   local log_file = io.open(log_file_path, "a")
@@ -374,21 +388,22 @@ return {
               -- end
               local kind = entry:get_kind()
               local node = ts_utils.get_node_at_cursor():type()
-              local is_parent_class = (ts_utils.get_node_at_cursor():parent() ~= nil) and (ts_utils.get_node_at_cursor():parent():type()  == "class_definition")
+              local is_parent_class = (ts_utils.get_node_at_cursor():parent() ~= nil) and
+                  (ts_utils.get_node_at_cursor():parent():type() == "class_definition")
               -- if node == "ERROR" and kind == 6 then
               -- log("Got an issue")
               -- log('END')
               -- end
-              if (node == "argument_list" or node =="ERROR") and context.filetype =="python" then
+              if (node == "argument_list" or node == "ERROR") and context.filetype == "python" then
                 local str = entry:get_word()
-                local txt = string.sub(str,string.len(str))
+                local txt = string.sub(str, string.len(str))
                 -- 6 == "Variable"
                 -- if we have a variable and it finish with = we show it
-                if kind == 6 and txt=='='  then
+                if kind == 6 and txt == '=' then
                   return true
                   -- 7 == "Class"
                   -- if we have an error
-                elseif  kind == 7 and is_parent_class then
+                elseif kind == 7 and is_parent_class then
                   return true
                 else
                   return false
@@ -416,14 +431,21 @@ return {
           { name = 'buffer' }
         }
       })
+      -- Add cmp completion
+      cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+        sources = {
+          { name = "dap" },
+          { name = "path" }
+        },
+      })
 
       -- Use cmdline & path source for ':'.
       cmp.setup.cmdline(':', {
         sources = cmp.config.sources({
           { name = 'path' }
         }, {
-            { name = 'cmdline' }
-          })
+          { name = 'cmdline' }
+        })
       })
     end,
     dependencies = {
@@ -431,14 +453,14 @@ return {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-path' },
-      {"ray-x/cmp-treesitter"},
+      { "ray-x/cmp-treesitter" },
       { 'hrsh7th/cmp-cmdline' },
       { 'L3MON4D3/LuaSnip' },
-      {'hrsh7th/cmp-nvim-lua'},
+      { 'hrsh7th/cmp-nvim-lua' },
       { 'saadparwaiz1/cmp_luasnip' },
       { 'rafamadriz/friendly-snippets' },
       -- {"hrsh7th/cmp-nvim-lsp-signature-help"},
-      {"onsails/lspkind.nvim"}
+      { "onsails/lspkind.nvim" }
     }
   },
   {
@@ -447,53 +469,53 @@ return {
     keys = {
       { "gh", "<cmd>Lspsaga lsp_finder<CR>", desc = "LSP Finder" },
       -- Code action
-      {"<leader>ca", "<cmd>Lspsaga code_action<CR>",mode = {"n","v"},desc = "[C]ode [A]ction"},
+      { "<leader>ca", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "[C]ode [A]ction" },
       -- Rename
-      { "grr", "<cmd>Lspsaga rename<CR>",desc = "[R]ename in file"},
+      { "grr", "<cmd>Lspsaga rename<CR>", desc = "[R]ename in file" },
       -- Rename word in whole project
-      { "grp", "<cmd>Lspsaga rename ++project<CR>",desc="[R]ename in [P]roject"},
+      { "grp", "<cmd>Lspsaga rename ++project<CR>", desc = "[R]ename in [P]roject" },
       -- Peek Definition
       -- you can edit the definition file in this float window
       -- also support open/vsplit/etc operation check definition_action_keys
       -- support tagstack C-t jump back
-      { "gdp", "<cmd>Lspsaga peek_definition<CR>",desc="[D]definition [P]eek"},
+      { "gdp", "<cmd>Lspsaga peek_definition<CR>", desc = "[D]definition [P]eek" },
       -- Go to Definition
-      {"gdd", "<cmd>Lspsaga goto_definition<CR>",desc="[D]efinition Go"},
+      { "gdd", "<cmd>Lspsaga goto_definition<CR>", desc = "[D]efinition Go" },
       -- Show line diagnostics you can pass argument ++unfocus to make
       -- show_line_diagnostics float window unfocus
-      { "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>",desc="[S]how [L]ine diagnostics"},
+      { "<leader>sl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "[S]how [L]ine diagnostics" },
       -- Show cursor diagnostic
       -- also like show_line_diagnostics  support pass ++unfocus
-      { "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>",desc="[S]how [C]ursor diagnostics"},
+      { "<leader>sc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "[S]how [C]ursor diagnostics" },
       -- Show buffer diagnostic
-      { "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>",desc="[S]how [B]uffer diagnostics"},
+      { "<leader>sb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "[S]how [B]uffer diagnostics" },
       -- Diagnostic jump can use `<c-o>` to jump back
-      { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>",desc ="Go to Diagnostic Previous"},
-      { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>",desc="Go to Diagnostic Next"},
+      { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Go to Diagnostic Previous" },
+      { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Go to Diagnostic Next" },
       -- Diagnostic jump with filter like Only jump to error
-      { "[E",  function()
+      { "[E", function()
         require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-      end,desc="Go to Diagnostic Error Previous"},
+      end, desc = "Go to Diagnostic Error Previous" },
       { "]E", function()
         require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-      end,desc="Go to Diagnostic Error Next"},
+      end, desc = "Go to Diagnostic Error Next" },
       -- Toggle Outline
-      {"<leader>o", "<cmd>Lspsaga outline<CR>",desc="[O]utline right bar"},
+      { "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "[O]utline right bar" },
       -- Hover Doc
       -- if there has no hover will have a notify no information available
       -- to disable it just Lspsaga hover_doc ++quiet
       -- press twice it will jump into hover window
-      { "KD", "<cmd>Lspsaga hover_doc<CR>",desc="Show Doc Hover"},
+      { "KD", "<cmd>Lspsaga hover_doc<CR>", desc = "Show Doc Hover" },
       -- if you want keep hover window in right top you can use ++keep arg
       -- notice if you use hover with ++keep you press this keymap it will
       -- close the hover window .if you want jump to hover window must use
       -- wincmd command <C-w>w
-      { "KK", "<cmd>Lspsaga hover_doc ++keep<CR>",desc = "Show doc Keep"},
+      { "KK", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Show doc Keep" },
       -- Callhierarchy
-      { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>",desc = "[C]ode Calls [I]ncoming"},
-      { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>",desc = "[C]ode Calls [O]utgoing"},
+      { "<Leader>ci", "<cmd>Lspsaga incoming_calls<CR>", desc = "[C]ode Calls [I]ncoming" },
+      { "<Leader>co", "<cmd>Lspsaga outgoing_calls<CR>", desc = "[C]ode Calls [O]utgoing" },
       -- Float terminal
-      {"<M-d>", "<cmd>Lspsaga term_toggle<CR>", mode = {"n", "t"},desc="Show Terminal"}
+      { "<M-d>", "<cmd>Lspsaga term_toggle<CR>", mode = { "n", "t" }, desc = "Show Terminal" }
     },
     config = function()
 
@@ -510,16 +532,16 @@ return {
             vsplit = '<C-c>v',
             split = '<C-c>i',
             tabe = '<C-c>t',
-            quit =  'q',
+            quit = 'q',
             close = '<Esc>',
           }
         }
       )
       -- saga.init_lsp_saga()
     end,
-    dependencies = { {'nvim-tree/nvim-web-devicons'} }
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
   },
-   {
+  {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
@@ -558,10 +580,10 @@ return {
         timer_interval = 20,
         bind = true,
         hint_prefix = "",
-        extra_trigger_chars = {'=',',' },
+        extra_trigger_chars = { '=', ',' },
         -- floating_window = false,
       })
     end,
   },
-  {'nvim-treesitter/playground'},
+  { 'nvim-treesitter/playground' },
 }

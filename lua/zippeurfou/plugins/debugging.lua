@@ -9,6 +9,14 @@ return {
     'nvim-neotest/neotest',
     config = function()
       require("neotest").setup {
+        log_level = vim.log.levels.DEBUG,
+        quickfix = {
+          open = false,
+        },
+        status = {
+          virtual_text = true,
+          signs = true,
+        },
         adapters = {
           require "neotest-python" {
             -- Extra arguments for nvim-dap configuration
@@ -55,6 +63,8 @@ return {
     dependencies = {
       { 'mfussenegger/nvim-dap' },
     }
+  },
+  { "rcarriga/cmp-dap"
   },
   {
     'theHamsta/nvim-dap-virtual-text',
