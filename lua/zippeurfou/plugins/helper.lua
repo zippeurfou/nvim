@@ -47,6 +47,7 @@ return {
     end,
     config = function()
       vim.g.doge_mapping = '<Leader>h'
+      vim.g.doge_doc_standard_python = 'google'
     end,
   },
   { "iamcco/markdown-preview.nvim",

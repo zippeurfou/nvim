@@ -44,11 +44,51 @@ map("n", "<leader>Dc", "<cmd>lua require'dap'.continue()<cr>", "[C]ontinue")
 map("n", "<leader>Di", "<cmd>lua require'dap'.step_into()<cr>", "[I]nto")
 map("n", "<leader>Do", "<cmd>lua require'dap'.step_over()<cr>", "[O]ver")
 map("n", "<leader>DO", "<cmd>lua require'dap'.step_out()<cr>", "[O]ut")
-map("n", "<leader>Dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "[R]epl toggle")
+-- map("n", "<leader>Dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "[R]epl toggle")
+map("n", "<leader>Dr",function() require("dapui").toggle({layout=2, reset=true}) end, "[R]epl toggle")
 map("n", "<leader>DR", function() require("dap").restart_frame() end, "[R]estart dap")
 map("n", "<leader>DC", function() require("dap").run_to_cursor() end, "Run To [C]ursor")
 map("n", "<leader>Dl", "<cmd>lua require'dap'.run_last()<cr>", "[L]ast")
 map("n", "<leader>Du", "<cmd>lua require'dapui'.toggle()<cr>", "[U]I")
+map("n", "<leader>Dt", "<cmd> lua require'neotest'.output_panel.toggle()<cr>", "[T]erminal")
+map("n", "<leader>DT", function() require("dapui").toggle({layout=3, reset=true}) end, "[T]erminal dap")
+-- map("n", "<leader>Dt", function()
+--   local dapui = require("dapui")
+--
+--   local function open_in_tab(element)
+--     local buffer = dapui.elements[element].buffer()
+--     vim.cmd("tabnew")
+--     vim.api.nvim_win_set_buf(0, buffer)
+--     require("dapui").setup({
+--       layouts = { {
+--         elements = { {
+--           id = "scopes",
+--           size = 0.25
+--         }, {
+--           id = "breakpoints",
+--           size = 0.25
+--         }, {
+--           id = "stacks",
+--           size = 0.25
+--         }, {
+--           id = "watches",
+--           size = 0.25
+--         } },
+--         position = "left",
+--         size = 40
+--       }, {
+--         elements = { {
+--           id = "console",
+--           size = 1
+--         } },
+--         position = "bottom",
+--         size = 10
+--       } },
+--     })
+--   end
+--   open_in_tab("repl")
+-- end
+--   , "[T]erminal")
 map("n", "<leader>De", function() require("dap").close() end, "[E]xit Session")
 map("n", "<leader>DE", "<cmd>lua require'dap'.terminate()<cr>", "[E]xit kill")
 map({ "n", "v" }, "<leader>Dh", "<cmd>lua require('dap.ui.widgets').hover()<cr>", "[H]over")
