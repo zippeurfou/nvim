@@ -110,6 +110,7 @@ return {
         commented = true, -- prefix virtual text with comment string
         only_first_definition = false, -- only show virtual text at first definition (if there are multiple)
         all_references = true, -- show virtual text on all all references of the variable (not only definitions)
+        clear_on_continue = false,
         -- experimental features:
         -- virt_text_pos = 'eol', -- position of virtual text, see `:h nvim_buf_set_extmark()`
         all_frames = true, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
@@ -117,9 +118,11 @@ return {
         -- virt_text_win_col = nil -- position the virtual text at a fixed window column (starting from the first text column) ,
         -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
       }
-    end
+    end,
+    branch = "master",
   },
   dependencies = {
     { 'mfussenegger/nvim-dap' },
-  }
+  },
+  branch = "master",
 }

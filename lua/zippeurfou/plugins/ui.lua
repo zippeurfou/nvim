@@ -18,6 +18,7 @@ return {
   },
   {
     'j-hui/fidget.nvim',
+    tag = "legacy",
     config = function()
       require('fidget').setup {}
     end
@@ -56,6 +57,7 @@ return {
     end,
   },
   { 'lukas-reineke/indent-blankline.nvim',
+    tag='v2.20.8',
     config = function()
       -- vim.g.indent_blankline_use_treesitter_scope = true
       require("indent_blankline").setup({
