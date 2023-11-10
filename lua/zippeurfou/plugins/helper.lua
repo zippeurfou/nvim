@@ -16,6 +16,7 @@ return {
         ["<leader>i"] = { name = "+iron" },
         ["<leader>is"] = { name = "+send" },
         ["<leader>c"] = { name = "+code" },
+        ["<leader>H"] = { name = "+harpoon" },
         ["<leader>p"] = { name = "+paste" },
         ["<leader>s"] = { name = "+showdiagnostic" },
         ["<leader>z"] = { name = "+zen" },

@@ -119,6 +119,19 @@ return {
     },
   },
   {
+    "ThePrimeagen/harpoon",
+    config = function()
+      local mark = require "harpoon.mark"
+      local ui = require "harpoon.ui"
+      vim.keymap.set("n", ",ha", mark.add_file)
+      vim.keymap.set("n", ",hn", ui.nav_next)
+      vim.keymap.set("n", ",hp", ui.nav_prev)
+      vim.keymap.set("n", ",hh", ui.toggle_quick_menu)
+      require("telescope").load_extension "harpoon"
+    end,
+    -- enabled = false,
+  },
+  {
     'hkupty/iron.nvim',
     config = function()
       local iron = require("iron.core")
