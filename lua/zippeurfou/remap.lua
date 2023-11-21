@@ -34,10 +34,10 @@ map("n", "<leader>zm", ":TZMinimalist<CR>", '[Z]en [M]inimalist')
 map("n", "<leader>za", ":TZAtaraxis<CR>", '[Z]en [A]tarix')
 map("n", "<C-w>m", ":TZFocus<CR>", 'Maximize window')
 -- harpoon
-map("n", "<leader>Ha","<cmd>lua require('harpoon.mark').add_file()<cr>", "[H]arpoon [a]dd file")
-map("n", "<leader>Hn","<cmd>lua require('harpoon.ui').nav_next()<cr>", "[H]arpoon [n]ext")
-map("n", "<leader>Hp","<cmd>lua require('harpoon.ui').nav_prev()<cr>", "[H]arpoon [p]revious")
-map("n", "<leader>Hh","<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "[H]arpoon toggle")
+map("n", "<leader>Ha","<cmd>lua require('harpoon.mark').add_file()<cr>", "[H]arpoon [A]dd file")
+map("n", "<leader>Hn","<cmd>lua require('harpoon.ui').nav_next()<cr>", "[H]arpoon [N]ext")
+map("n", "<leader>Hp","<cmd>lua require('harpoon.ui').nav_prev()<cr>", "[H]arpoon [P]revious")
+map("n", "<leader>Ht","<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "[H]arpoon [T]oggle")
 -- debug stuff
 -- neotest
 map("n", "<leader>Dm", "<cmd>lua require('neotest').run.run()<cr>", "Test [M]ethod")
