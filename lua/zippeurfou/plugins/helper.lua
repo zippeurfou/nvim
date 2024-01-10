@@ -30,6 +30,13 @@ return {
   },
   -- show colors when typing :ColorizerAttachToBuffer
   { "norcalli/nvim-colorizer.lua" },
+  -- autocomplete
+  {'David-Kunz/gen.nvim',
+    config = function()
+    require('gen').model = 'zephyr' -- default 'mistral:instruct', best model? codellama:34b-code-q4_K_M
+    -- require('gen').model = 'codellama:7b-code-q4_K_M' -- default 'mistral:instruct', best model? codellama:34b-code-q4_K_M
+    end,
+  },
   -- strip whitespace
   { 'echasnovski/mini.trailspace',
     config = function()

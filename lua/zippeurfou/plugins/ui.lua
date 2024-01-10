@@ -1,7 +1,8 @@
 return {
   { 'ryanoasis/vim-devicons' },
   { 'nvim-tree/nvim-web-devicons', lazy = true },
-  { 'lewis6991/gitsigns.nvim',
+  {
+    'lewis6991/gitsigns.nvim',
     config = function()
       require('gitsigns').setup(
         {
@@ -23,7 +24,8 @@ return {
       require('fidget').setup {}
     end
   },
-  { 'Pocco81/true-zen.nvim',
+  {
+    'Pocco81/true-zen.nvim',
     config = function()
       require("true-zen").setup {
       }
@@ -51,13 +53,15 @@ return {
   --     })
   --   end,
   -- },
-  { 'chentoast/marks.nvim',
+  {
+    'chentoast/marks.nvim',
     config = function()
       require 'marks'.setup {}
     end,
   },
-  { 'lukas-reineke/indent-blankline.nvim',
-    tag='v2.20.8',
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    tag = 'v2.20.8',
     config = function()
       -- vim.g.indent_blankline_use_treesitter_scope = true
       require("indent_blankline").setup({
@@ -70,20 +74,33 @@ return {
       })
     end,
   },
-  { 'jbyuki/nabla.nvim',
+  {
+    'jbyuki/nabla.nvim',
     config = function()
       require "nabla".enable_virt({
         autogen = true, -- auto-regenerate ASCII art when exiting insert mode
-        silent = true, -- silents error messages
+        silent = true,  -- silents error messages
       })
     end,
+  },
+  {
+    "sourcegraph/sg.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
+
+    -- If you have a recent version of lazy.nvim, you don't need to add this!
+    build = "nvim -l build/init.lua",
   },
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
       return {
-        sections = { lualine_c = { 'buffers' } }
+        sections = { lualine_c = { 'buffers' } },
+        disabled_filetypes = {
+          "dapui_watches", "dapui_breakpoints",
+          "dapui_scopes", "dapui_console",
+          "dapui_stacks", "dap-repl"
+        },
       }
     end,
   },
@@ -103,8 +120,9 @@ return {
   --   end,
   -- },
   { "bluz71/vim-nightfly-colors", lazy = true },
-  { "EdenEast/nightfox.nvim", lazy = true },
-  { "folke/tokyonight.nvim",
+  { "EdenEast/nightfox.nvim",     lazy = true },
+  {
+    "folke/tokyonight.nvim",
     config = function()
       require("tokyonight").setup()
       vim.cmd("colorscheme tokyonight-night")

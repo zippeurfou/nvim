@@ -301,6 +301,7 @@ return {
       local lspkind         = require('lspkind')
       local ts_utils        = require("nvim-treesitter.ts_utils")
       local source_mapping  = {
+        -- cody = "[Cody]",
         nvim_lsp = "[Lsp]",
         luasnip = "[Snip]",
         buffer = "[Buffer]",
@@ -377,6 +378,7 @@ return {
               or require("cmp_dap").is_dap_buffer()
         end,
         sources = cmp.config.sources({
+          -- { name = "cody", max_item_count = 5 },
           { name = "nvim_lsp", max_item_count = 15,
             entry_filter = function(entry, context)
               -- local log = function(message)
