@@ -301,7 +301,7 @@ return {
       local lspkind         = require('lspkind')
       local ts_utils        = require("nvim-treesitter.ts_utils")
       local source_mapping  = {
-        -- cody = "[Cody]",
+        cody = "[Cody]",
         nvim_lsp = "[Lsp]",
         luasnip = "[Snip]",
         buffer = "[Buffer]",
@@ -420,6 +420,7 @@ return {
           { name = "buffer", max_item_count = 5 },
           { name = "nvim_lua" },
           { name = "path" },
+          { name = "cody", max_item_count = 2 },
           -- { name = 'nvim_lsp' },
           -- { name = 'luasnip' }, -- For luasnip users.
           -- { name = "buffer" },
