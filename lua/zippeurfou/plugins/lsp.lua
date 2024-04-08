@@ -30,12 +30,14 @@ return {
       },
       servers = {
         jsonls = {},
+        bashls = {},
         pyright = {
           settings = {
             python = {
               analysis = {
                 autoSearchPaths = true,
-                diagnosticMode = "workspace",
+                -- diagnosticMode = "workspace",
+                diagnosticMode = "openFilesOnly",
                 useLibraryCodeForTypes = true,
                 autoImportCompletions = true,
                 typeCheckingMode = "basic",
@@ -167,6 +169,7 @@ return {
           -- nls.builtins.formatting.prettierd,
           -- nls.builtins.formatting.stylua,
           nls.builtins.formatting.black,
+          -- nls.builtins.formatting.shfmt,
           -- nls.builtins.formatting.ruff,
           -- nls.builtins.diagnostics.ruff,
           -- nls.builtins.diagnostics.flake8,

@@ -46,3 +46,14 @@ o.foldmethod='indent'
 o.foldlevel=99
 vim.g.python3_host_prog = vim.fn.getenv 'PYENV_ROOT' .. '/versions/neovim3/bin/python'
 vim.g.pyton_host_prog = vim.fn.getenv 'PYENV_ROOT' .. '/versions/neovim2/bin/python'
+-- make zsh files recognized as sh for bash-ls & treesitter
+vim.filetype.add {
+	extension = {
+		zsh = "sh",
+		sh = "sh", -- force sh-files with zsh-shebang to still get sh as filetype
+	},
+	filename = {
+		[".zshrc"] = "sh",
+		[".zshenv"] = "sh",
+	},
+}

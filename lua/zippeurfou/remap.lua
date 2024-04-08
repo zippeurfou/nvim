@@ -19,7 +19,7 @@ map({ "n", "v" }, "<leader>y", [["+y]], 'Copy to Clipboard (CTR+C)')
 map("n", "<leader>Y", [["+Y]], 'Copy to Clipboard (CTR+C) whole line')
 -- Buffer stuff
 map({ "n", "v" }, "<leader>d", [["_d]], 'Delete to Buffer ?')
-map("n", "<leader>t", ':NeoTreeFocusToggle<cr>', 'Open Explorer Tree')
+map("n", "<leader>t", ':Neotree toggle<cr>', 'Open Explorer Tree')
 map("n", "[b", "<cmd>bprevious<cr>", "Prev buffer")
 map("n", "]b", "<cmd>bnext<cr>", "Next buffer")
 -- map("n", "<leader>n", 'o-<space><space><ESC>"=strftime("%m/%d/%y")<CR>P i:<space>', 'Add Bragg entry')

@@ -1,6 +1,7 @@
 return {
   -- show help when typing stuff. Help me :)
-  { "folke/which-key.nvim",
+  {
+    "folke/which-key.nvim",
     config = function()
       require("which-key").setup()
       local wk = require("which-key")
@@ -9,6 +10,7 @@ return {
         ["g"] = { name = "+goto" },
         ["gd"] = { name = "+gotodefinition" },
         ["gr"] = { name = "+rename" },
+        ["gz"] = { name = "+surround" },
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["K"] = { name = "+hoverdoc" },
@@ -32,25 +34,29 @@ return {
   -- show colors when typing :ColorizerAttachToBuffer
   { "norcalli/nvim-colorizer.lua" },
   -- autocomplete
-  {'David-Kunz/gen.nvim',
+  {
+    'David-Kunz/gen.nvim',
     config = function()
-    require('gen').model = 'zephyr' -- default 'mistral:instruct', best model? codellama:34b-code-q4_K_M
-    -- require('gen').model = 'codellama:7b-code-q4_K_M' -- default 'mistral:instruct', best model? codellama:34b-code-q4_K_M
+      require('gen').model = 'zephyr' -- default 'mistral:instruct', best model? codellama:34b-code-q4_K_M
+      -- require('gen').model = 'codellama:7b-code-q4_K_M' -- default 'mistral:instruct', best model? codellama:34b-code-q4_K_M
     end,
   },
   -- strip whitespace
-  { 'echasnovski/mini.trailspace',
+  {
+    'echasnovski/mini.trailspace',
     config = function()
       require('mini.trailspace').setup({})
     end,
   },
   -- comment with gcc and co
-  { 'numToStr/Comment.nvim',
+  {
+    'numToStr/Comment.nvim',
     config = function()
       require('Comment').setup()
     end,
   },
-  { "kkoomen/vim-doge",
+  {
+    "kkoomen/vim-doge",
     build = function()
       vim.cmd(':call doge#install()')
     end,
@@ -59,6 +65,8 @@ return {
       vim.g.doge_doc_standard_python = 'google'
     end,
   },
-  { "iamcco/markdown-preview.nvim",
-    config = function() vim.fn["mkdp#util#install"]() end, },
+  {
+    "iamcco/markdown-preview.nvim",
+    config = function() vim.fn["mkdp#util#install"]() end,
+  },
 }
