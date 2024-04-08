@@ -85,7 +85,9 @@ return {
       })
     end,
     dependencies = {
-      { 'mfussenegger/nvim-dap' },
+      { 'mfussenegger/nvim-dap',
+        'nvim-neotest/nvim-nio'
+      },
     }
   },
   { 'LiadOz/nvim-dap-repl-highlights',

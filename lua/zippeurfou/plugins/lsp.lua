@@ -470,10 +470,10 @@ return {
     }
   },
   {
-    'glepnir/lspsaga.nvim',
+    'nvimdev/lspsaga.nvim',
     event = 'BufRead',
     keys = {
-      { "gh", "<cmd>Lspsaga lsp_finder<CR>", desc = "LSP Finder" },
+      { "gh", "<cmd>Lspsaga finder<CR>", desc = "LSP Finder" },
       -- Code action
       { "<leader>ca", "<cmd>Lspsaga code_action<CR>", mode = { "n", "v" }, desc = "[C]ode [A]ction" },
       -- Rename
