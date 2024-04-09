@@ -13,6 +13,50 @@ return {
             topdelete = { text = '‾' },
             changedelete = { text = '~' },
           },
+          on_attach = function(bufnr)
+            local gitsigns = require('gitsigns')
+
+            local function map(mode, keys, action, description)
+              local options = { noremap = true, silent = true, desc = description }
+              vim.keymap.set(mode, keys, action, options)
+            end
+
+            -- Navigation
+            map('n', ']c', function()
+              if vim.wo.diff then
+                vim.cmd.normal({ ']c', bang = true })
+              else
+                gitsigns.nav_hunk('next')
+              end
+            end,'Next Git Chunk')
+
+            map('n', '[c', function()
+              if vim.wo.diff then
+                vim.cmd.normal({ '[c', bang = true })
+              else
+                gitsigns.nav_hunk('prev')
+              end
+            end,'Previous Git Chunk')
+
+            -- Actions
+            map('n', '<leader>gs', gitsigns.stage_hunk,'[S]tage Hunk')
+            map('n', '<leader>gr', gitsigns.reset_hunk,'[R]eset Hunk')
+            map('v', '<leader>gs', function() gitsigns.stage_hunk { vim.fn.line('.'), vim.fn.line('v') } end,'[S]tage Hunk')
+            map('v', '<leader>gr', function() gitsigns.reset_hunk { vim.fn.line('.'), vim.fn.line('v') } end,'[R]eset Hunk')
+            map('n', '<leader>gS', gitsigns.stage_buffer,'[S]tage Buffer')
+            map('n', '<leader>gu', gitsigns.undo_stage_hunk,'[U]ndo Last Stage Hunk')
+            map('n', '<leader>gU', gitsigns.reset_buffer_index,'[U]ndo staged Buffer')
+            map('n', '<leader>gR', gitsigns.reset_buffer,'[R]eset unstaged Buffer')
+            map('n', '<leader>gp', gitsigns.preview_hunk,'[P]review Hunk')
+            map('n', '<leader>gb', function() gitsigns.blame_line { full = true } end,'[B]lame Line')
+            map('n', '<leader>gB', gitsigns.toggle_current_line_blame,'[B]lame Toggle')
+            map('n', '<leader>gd', gitsigns.diffthis,'[D]iff This')
+            map('n', '<leader>gD', function() gitsigns.diffthis('~') end,'[D]iff Last Commit')
+            -- map('n', '<leader>gd', gitsigns.toggle_deleted,)
+
+            -- Text object
+            map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+          end
         }
       )
     end,
