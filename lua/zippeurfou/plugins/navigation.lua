@@ -140,6 +140,13 @@ return {
     lazy = true,
   },
   {
+    "olacin/telescope-cc.nvim",
+    config = function()
+      require("telescope").load_extension "conventional_commits"
+    end,
+    lazy = true,
+  },
+  {
     'hkupty/iron.nvim',
     config = function()
       local iron = require("iron.core")

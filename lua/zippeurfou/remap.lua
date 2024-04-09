@@ -83,6 +83,7 @@ map("n", "[t", function()
 end, "Previous todo comment")
 map("n","<leader>Tt","<cmd>TodoTelescope<CR>", "Todo")
 -- Git stuff
+map("n","<leader>gc","<cmd>Telescope conventional_commits<cr>","[C]onventional Commit")
 -- map('n','<leader>ga','<cmd>!git add %<cr><cr>','[G]it [A]dd current file')
 -- map('n','<leader>gu','<cmd>!git restore --staged %<cr><cr>','[G]it [U]nstage current file')
 -- map('n','<leader>u',function()
