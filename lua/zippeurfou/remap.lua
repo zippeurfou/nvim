@@ -84,9 +84,20 @@ end, "Previous todo comment")
 map("n","<leader>Tt","<cmd>TodoTelescope<CR>", "Todo")
 -- Git stuff
 map("n","<leader>gc","<cmd>Telescope conventional_commits<cr>","[C]onventional Commit")
+vim.api.nvim_create_user_command("DiffviewToggle", function(e)
+  local view = require("diffview.lib").get_current_view()
+
+  if view then
+    vim.cmd("DiffviewClose")
+  else
+    vim.cmd("DiffviewOpen " .. e.args)
+  end
+end, { nargs = "*" })
+map("n", "<leader>gv","<cmd>DiffviewToggle<cr>","Diff [V]iew")
+
 -- map('n','<leader>ga','<cmd>!git add %<cr><cr>','[G]it [A]dd current file')
 -- map('n','<leader>gu','<cmd>!git restore --staged %<cr><cr>','[G]it [U]nstage current file')
-map('n','<leader>gP','<cmd>!git push<cr>','[P]ush to Master')
+map('n','<leader>gP','<cmd>!git push<cr>','[P]ush')
 map('n','<leader>u',function()
   local filetype = vim.api.nvim_buf_get_option(0, "filetype")
   vim.cmd("tab split | diffthis")
