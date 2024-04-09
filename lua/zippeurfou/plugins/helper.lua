@@ -14,6 +14,7 @@ return {
         ["]"] = { name = "+next" },
         ["["] = { name = "+prev" },
         ["K"] = { name = "+hoverdoc" },
+        ["<leader>g"] = { name = "+git" },
         ["<leader>D"] = { name = "+debug" },
         ["<leader>i"] = { name = "+iron" },
         ["<leader>is"] = { name = "+send" },
