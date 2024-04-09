@@ -137,29 +137,29 @@ return {
         local clean_message = diagnostics[index].message:gsub("[A-Za-z0-9:/\\._%-]+[.][A-Za-z0-9]+", "")
         clean_message = clean_message:gsub("[A-Za-z0-9:/\\._%-]+[/\\][A-Za-z0-9:/\\._%-]+[.][A-Za-z0-9]+", "")
         local msg =
-        "You are an expert coder and helpful assistant who can help debug code diagnostics, such as warning and error messages."
-        ..
-        "When appropriate, give solutions with code snippets as fenced codeblocks with a language identifier to enable syntax highlighting.\n"
-        .. "This is a the diagnostic message for the code:\n"
-        .. clean_message
+            "You are an expert coder and helpful assistant who can help debug code diagnostics, such as warning and error messages."
+            ..
+            "When appropriate, give solutions with code snippets as fenced codeblocks with a language identifier to enable syntax highlighting.\n"
+            .. "This is a the diagnostic message for the code:\n"
+            .. clean_message
 
         require("sg.cody.commands").ask_range(bufnr, start_line - 1, end_line, msg)
       end
 
       local doc_msg = "Add Docstring and arguments types hints and return types hints to the whole code."
-      .. "For types hints leverage the typing package."
-      .. "DO NOT ADD NEW PACKAGE IMPORT."
-      .. "Follow Google Python Style Guide, add type hints to the arguments in the docstring inside parenthesis."
-      .. "Following this convention name (type hints): Description."
-      .. "If there is no type hints DO ADD them."
-      .. "When applicable, add sections such as Args, Returns, Attributes, Todos, Notes, See Also, Warnings, Raises, etc..."
-      .. "Provide clear technical description."
-      .. "If the method is missing the class definition DO NOT CREATE ONE BUT KEEP self if provided."
-      -- .. "If a class is provided MAKE SURE TO ADD AS MUCH DOCSTRING AS POSSIBLE."
-      .. "DO NOT CHANGE ANY CODE OR COMMENTS BESIDE WHAT INSTRUCTED."
-      .. "Use tabs instead of space for indentation."
-      .. "Strip whitespaces."
-      .. "DO NOT MAKE ANYTHING UP, USE FACT ONLY."
+          .. "For types hints leverage the typing package."
+          .. "DO NOT ADD NEW PACKAGE IMPORT."
+          .. "Follow Google Python Style Guide, add type hints to the arguments in the docstring inside parenthesis."
+          .. "Following this convention name (type hints): Description."
+          .. "If there is no type hints DO ADD them."
+          .. "When applicable, add sections such as Args, Returns, Attributes, Todos, Notes, See Also, Warnings, Raises, etc..."
+          .. "Provide clear technical description."
+          .. "If the method is missing the class definition DO NOT CREATE ONE BUT KEEP self if provided."
+          -- .. "If a class is provided MAKE SURE TO ADD AS MUCH DOCSTRING AS POSSIBLE."
+          .. "DO NOT CHANGE ANY CODE OR COMMENTS BESIDE WHAT INSTRUCTED."
+          .. "Use tabs instead of space for indentation."
+          .. "Strip whitespaces."
+          .. "DO NOT MAKE ANYTHING UP, USE FACT ONLY."
 
       wk.register({
         name = '+cody',
@@ -173,8 +173,8 @@ return {
         p = { ':CodyTaskPrev<CR>', '[C]ody Task [P]revious' },
         n = { ':CodyTaskNext<CR>', '[C]ody Task [N]ext' },
         -- Custom stuff
-        d = { ":CodyTask "..doc_msg.."<CR>", "[C]ody [d]ocumentation Generate" },
-        D = {search_diagnostics_cody, "[C]ody [D]iagnostic Search"},
+        d = { ":CodyTask " .. doc_msg .. "<CR>", "[C]ody [d]ocumentation Generate" },
+        D = { search_diagnostics_cody, "[C]ody [D]iagnostic Search" },
         -- Steal stuff from https://github.com/undg/.dot/blob/aed6fb4b2a11463d8004a5b8c384bf07df4e4324/vim/.config/nvim/lua/plugins/sg.lua
         -- a = {
         --   name = 'automation',
@@ -195,8 +195,8 @@ return {
         a = { ':CodyAsk ', '[C]ody [A]sk' },
         t = { ':CodyTask ', '[C]ody [T]ask Create' },
         -- Custom stuff
-        d = { ":CodyTask "..doc_msg.."<CR>", "[C]ody [d]ocumentation Generate" },
-        D = {search_diagnostics_cody, "[C]ody [D]iagnostic Search"},
+        d = { ":CodyTask " .. doc_msg .. "<CR>", "[C]ody [d]ocumentation Generate" },
+        D = { search_diagnostics_cody, "[C]ody [D]iagnostic Search" },
       }, { prefix = '<leader>C', mode = 'v', silent = false })
     end,
     dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
@@ -241,5 +241,14 @@ return {
       require("tokyonight").setup()
       vim.cmd("colorscheme tokyonight-night")
     end
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
   },
 }

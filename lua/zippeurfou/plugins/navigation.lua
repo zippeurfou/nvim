@@ -132,6 +132,14 @@ return {
     -- enabled = false,
   },
   {
+    "nvim-telescope/telescope-dap.nvim",
+    dependencies = "nvim-telescope/telescope.nvim",
+    config = function()
+      require("telescope").load_extension "dap"
+    end,
+    lazy = true,
+  },
+  {
     'hkupty/iron.nvim',
     config = function()
       local iron = require("iron.core")

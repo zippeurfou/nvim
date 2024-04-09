@@ -1,5 +1,6 @@
 -- All the remap I can do
 -- TODO: Figure out how to add the one that are part of plugins
+
 -- Change mapleader
 vim.g.mapleader = ","
 vim.g.wordmotion_prefix = '<leader>'
@@ -71,9 +72,13 @@ map("n", "<leader>Ds", function()
   widgets.centered_float(widgets.scopes)
 end
 , "[S]copes")
-map("n", "<leader>Dw", function()
-  local widgets = require('dap.ui.widgets')
-  widgets.centered_float(widgets.frames)
-end
-, "[W]idget frames")
+map("n", "<leader>Dw", "<cmd>Telescope dap frames<cr>" , "[W]idget frames")
 
+map("n", "]t", function()
+  require("todo-comments").jump_next()
+end, "Next todo comment")
+
+map("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, "Previous todo comment")
+map("n","<leader>Tt","<cmd>TodoTelescope<CR>", "Todo")
