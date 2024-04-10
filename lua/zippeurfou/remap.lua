@@ -94,6 +94,7 @@ vim.api.nvim_create_user_command("DiffviewToggle", function(e)
   end
 end, { nargs = "*" })
 map("n", "<leader>gv","<cmd>DiffviewToggle<cr>","Diff [V]iew")
+map("n", "<leader>go","<cmd>Octo<cr>","[O]cto pr list")
 
 -- map('n','<leader>ga','<cmd>!git add %<cr><cr>','[G]it [A]dd current file')
 -- map('n','<leader>gu','<cmd>!git restore --staged %<cr><cr>','[G]it [U]nstage current file')
