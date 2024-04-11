@@ -72,7 +72,7 @@ map("n", "<leader>Ds", function()
   widgets.centered_float(widgets.scopes)
 end
 , "[S]copes")
-map("n", "<leader>Dw", "<cmd>Telescope dap frames<cr>" , "[W]idget frames")
+map("n", "<leader>Dw", "<cmd>Telescope dap frames<cr>", "[W]idget frames")
 
 map("n", "]t", function()
   require("todo-comments").jump_next()
@@ -81,9 +81,9 @@ end, "Next todo comment")
 map("n", "[t", function()
   require("todo-comments").jump_prev()
 end, "Previous todo comment")
-map("n","<leader>Tt","<cmd>TodoTelescope<CR>", "Todo")
+map("n", "<leader>Tt", "<cmd>TodoTelescope<CR>", "Todo")
 -- Git stuff
-map("n","<leader>gc","<cmd>Telescope conventional_commits<cr>","[C]onventional Commit")
+map("n", "<leader>gc", "<cmd>Telescope conventional_commits<cr>", "[C]onventional Commit")
 vim.api.nvim_create_user_command("DiffviewToggle", function(e)
   local view = require("diffview.lib").get_current_view()
 
@@ -93,17 +93,25 @@ vim.api.nvim_create_user_command("DiffviewToggle", function(e)
     vim.cmd("DiffviewOpen " .. e.args)
   end
 end, { nargs = "*" })
-map("n", "<leader>gv","<cmd>DiffviewToggle<cr>","Diff [V]iew")
-map("n", "<leader>go","<cmd>Octo<cr>","[O]cto pr list")
+map("n", "<leader>gv", "<cmd>DiffviewToggle<cr>", "Diff [V]iew")
+map("n", "<leader>go", "<cmd>Octo<cr>", "[O]cto pr list")
 
 -- map('n','<leader>ga','<cmd>!git add %<cr><cr>','[G]it [A]dd current file')
 -- map('n','<leader>gu','<cmd>!git restore --staged %<cr><cr>','[G]it [U]nstage current file')
-map('n','<leader>gP','<cmd>!git push<cr>','[P]ush')
-map('n','<leader>u',function()
-  local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-  vim.cmd("tab split | diffthis")
-  vim.cmd("aboveleft vnew | r # | normal! 1Gdd")
-  vim.cmd("diffthis")
-  vim.cmd("setlocal bt=nofile bh=wipe nobl noswf ro ft=" .. filetype)
-  vim.cmd("wincmd l")
-end,'[U]nsaved Changes DiffView')
+map('n', '<leader>gP', '<cmd>!git push<cr>', '[P]ush')
+map('n', '<leader>u', function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local diff_mode = vim.fn.getbufvar(bufnr, "&diff") == 1
+  -- Check if the current buffer is in diff mode
+  if diff_mode then
+    -- If in diff mode, close diff view
+    vim.cmd("diffoff | tabclose")
+  else
+    local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+    vim.cmd("tab split | diffthis")
+    vim.cmd("aboveleft vnew | r # | normal! 1Gdd")
+    vim.cmd("diffthis")
+    vim.cmd("setlocal bt=nofile bh=wipe nobl noswf ro ft=" .. filetype)
+    vim.cmd("wincmd l")
+  end
+end, '[U]nsaved Changes DiffView')
