@@ -1,5 +1,6 @@
 require("zippeurfou/options")
 require("zippeurfou/remap")
+require("zippeurfou/autocmd")
 
 local o = vim.opt
 -- lazy.nvim setup
