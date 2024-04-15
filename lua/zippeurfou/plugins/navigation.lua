@@ -113,6 +113,7 @@ return {
             ["<C-u>"] = function(...)
               return require("telescope.actions").cycle_history_prev(...)
             end,
+            ["<C-h>"] = "which_key",
           },
         },
       },
