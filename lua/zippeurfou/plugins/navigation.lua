@@ -97,6 +97,7 @@ return {
         prompt_prefix = " ",
         selection_caret = " ",
         mappings = {
+          -- In normal mode ? is which-key
           i = {
             ["<c-t>"] = function(...)
               return require("trouble.providers.telescope").open_with_trouble(...)
