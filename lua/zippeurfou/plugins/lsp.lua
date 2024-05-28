@@ -507,6 +507,7 @@ return {
       end, desc = "Go to Diagnostic Error Next" },
       -- Toggle Outline
       { "<leader>o", "<cmd>Lspsaga outline<CR>", desc = "[O]utline right bar" },
+      -- use o to fold,e to jump to it, q to quit
       -- Hover Doc
       -- if there has no hover will have a notify no information available
       -- to disable it just Lspsaga hover_doc ++quiet

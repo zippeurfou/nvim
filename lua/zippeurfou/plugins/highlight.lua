@@ -72,6 +72,15 @@ return {
             ['if'] = '@function.inner',
             ['ac'] = '@class.outer',
             ['ic'] = '@class.inner',
+            ['iC'] = '@call.inner',
+            ['aC'] = '@call.outer',
+            ['iA'] = '@assignment.inner',
+            ['aA'] = '@assignment.outer',
+            ['il'] = '@loop.inner',
+            ['al'] = '@loop.outer',
+            ['ii'] = '@conditional.inner',
+            ['ai'] = '@conditional.outer',
+            ['aS'] = '@statement.outer',
           },
         },
         move = {
@@ -80,18 +89,22 @@ return {
           goto_next_start = {
             [']m'] = '@function.outer',
             [']]'] = '@class.outer',
+            [']s'] = '@statement.outer',
           },
           goto_next_end = {
             [']M'] = '@function.outer',
             [']['] = '@class.outer',
+            [']S'] = '@statement.outer',
           },
           goto_previous_start = {
             ['[m'] = '@function.outer',
             ['[['] = '@class.outer',
+            ['[s'] = '@statement.outer',
           },
           goto_previous_end = {
             ['[M'] = '@function.outer',
             ['[]'] = '@class.outer',
+            ['[S'] = '@statement.outer',
           },
         },
         swap = {

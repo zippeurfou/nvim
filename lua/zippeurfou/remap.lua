@@ -115,3 +115,4 @@ map('n', '<leader>u', function()
     vim.cmd("wincmd l")
   end
 end, '[U]nsaved Changes DiffView')
+map("n", "<leader>O", "<CMD>Oil<CR>", { desc = "Oil" })

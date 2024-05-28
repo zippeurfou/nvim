@@ -309,7 +309,11 @@ return {
   {
     "folke/tokyonight.nvim",
     config = function()
-      require("tokyonight").setup()
+      require("tokyonight").setup({
+         on_highlights = function(hl, c)
+          hl.CursorLineNr = { fg = c.dark5 } -- # Use the old color. I don't like the orange
+          end,
+      })
       vim.cmd("colorscheme tokyonight-night")
     end
   },
