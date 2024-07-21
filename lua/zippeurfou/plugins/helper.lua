@@ -14,6 +14,7 @@ return {
         {
           {
             mode = { "n", "v" },
+            { "<leader><tab>", group = "tabs" },
             { "<leader>C",  group = "cody" },
             { "<leader>D",  group = "debug" },
             { "<leader>H",  group = "harpoon" },

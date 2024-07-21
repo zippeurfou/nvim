@@ -39,6 +39,14 @@ map("n", "<leader>Ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", "[H]ar
 map("n", "<leader>Hn", "<cmd>lua require('harpoon.ui').nav_next()<cr>", "[H]arpoon [N]ext")
 map("n", "<leader>Hp", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "[H]arpoon [P]revious")
 map("n", "<leader>Ht", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "[H]arpoon [T]oggle")
+-- tab nav
+map("n", "<leader><tab>l", "<cmd>tablast<cr>",  "Last Tab" )
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>",  "Close Other Tabs" )
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>",  "First Tab" )
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>",  "New Tab" )
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>",  "Next Tab" )
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>",  "Close Tab" )
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>",  "Previous Tab" )
 -- debug stuff
 -- neotest
 map("n", "<leader>Dm", "<cmd>lua require('neotest').run.run()<cr>", "Test [M]ethod")
