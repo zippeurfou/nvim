@@ -36,12 +36,26 @@ return {
             { "gd",         group = "gotodefinition" },
             { "gr",         group = "rename" },
             { "gz",         group = "surround" },
+            {
+              "<leader>W",
+              group = "windows",
+              expand = function()
+                return require("which-key.extras").expand.win()
+              end
+            },
+            {
+              "<leader>B",
+              group = "buffers",
+              expand = function()
+                return require("which-key.extras").expand.buf()
+              end
+            },
           },
         }
       )
       -- wk.register({
       --   mode = { "n", "v" },
-        -- ["g"] = { name = "+goto" },
+      -- ["g"] = { name = "+goto" },
       --   ["gd"] = { name = "+gotodefinition" },
       --   ["gr"] = { name = "+rename" },
       --   ["gz"] = { name = "+surround" },
