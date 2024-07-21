@@ -2,34 +2,68 @@ return {
   -- show help when typing stuff. Help me :)
   {
     "folke/which-key.nvim",
+    opts = {
+      icons = {
+        mappings = false,
+      },
+    },
     config = function()
-      require("which-key").setup()
+      require("which-key").setup({ icons = { mappings = false } })
       local wk = require("which-key")
-      wk.register({
-        mode = { "n", "v" },
-        ["g"] = { name = "+goto" },
-        ["gd"] = { name = "+gotodefinition" },
-        ["gr"] = { name = "+rename" },
-        ["gz"] = { name = "+surround" },
-        ["]"] = { name = "+next" },
-        ["["] = { name = "+prev" },
-        ["K"] = { name = "+hoverdoc" },
-        ["<leader>g"] = { name = "+git" },
-        ["<leader>D"] = { name = "+debug" },
-        ["<leader>i"] = { name = "+iron" },
-        ["<leader>is"] = { name = "+send" },
-        ["<leader>c"] = { name = "+code" },
-        ["<leader>C"] = { name = "+cody" },
-        ["<leader>H"] = { name = "+harpoon" },
-        ["<leader>p"] = { name = "+paste" },
-        ["<leader>s"] = { name = "+showdiagnostic" },
-        ["<leader>z"] = { name = "+zen" },
-        ["<leader>T"] = { name = "+telescope" },
-        ["<leader>Tf"] = { name = "+find" },
-        ["<leader>Ts"] = { name = "+search" },
-        ["<leader>Tg"] = { name = "+git" },
-        ["<leader>Tc"] = { name = "+colorscheme" },
-      })
+      wk.add(
+        {
+          {
+            mode = { "n", "v" },
+            { "<leader>C",  group = "cody" },
+            { "<leader>D",  group = "debug" },
+            { "<leader>H",  group = "harpoon" },
+            { "<leader>T",  group = "telescope" },
+            { "<leader>Tc", group = "colorscheme" },
+            { "<leader>Tf", group = "find" },
+            { "<leader>Tg", group = "git" },
+            { "<leader>Ts", group = "search" },
+            { "<leader>c",  group = "code" },
+            { "<leader>g",  group = "git" },
+            { "<leader>i",  group = "iron" },
+            { "<leader>is", group = "send" },
+            { "<leader>p",  group = "paste" },
+            { "<leader>s",  group = "showdiagnostic" },
+            { "<leader>z",  group = "zen" },
+            { "K",          group = "hoverdoc" },
+            { "[",          group = "prev" },
+            { "]",          group = "next" },
+            { "g",          group = "goto" },
+            { "gd",         group = "gotodefinition" },
+            { "gr",         group = "rename" },
+            { "gz",         group = "surround" },
+          },
+        }
+      )
+      -- wk.register({
+      --   mode = { "n", "v" },
+        -- ["g"] = { name = "+goto" },
+      --   ["gd"] = { name = "+gotodefinition" },
+      --   ["gr"] = { name = "+rename" },
+      --   ["gz"] = { name = "+surround" },
+      --   ["]"] = { name = "+next" },
+      --   ["["] = { name = "+prev" },
+      --   ["K"] = { name = "+hoverdoc" },
+      --   ["<leader>g"] = { name = "+git" },
+      --   ["<leader>D"] = { name = "+debug" },
+      --   ["<leader>i"] = { name = "+iron" },
+      --   ["<leader>is"] = { name = "+send" },
+      --   ["<leader>c"] = { name = "+code" },
+      --   ["<leader>C"] = { name = "+cody" },
+      --   ["<leader>H"] = { name = "+harpoon" },
+      --   ["<leader>p"] = { name = "+paste" },
+      --   ["<leader>s"] = { name = "+showdiagnostic" },
+      --   ["<leader>z"] = { name = "+zen" },
+      --   ["<leader>T"] = { name = "+telescope" },
+      --   ["<leader>Tf"] = { name = "+find" },
+      --   ["<leader>Ts"] = { name = "+search" },
+      --   ["<leader>Tg"] = { name = "+git" },
+      --   ["<leader>Tc"] = { name = "+colorscheme" },
+      -- })
     end,
   },
   -- show colors when typing :ColorizerAttachToBuffer

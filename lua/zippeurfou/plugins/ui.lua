@@ -232,43 +232,69 @@ return {
           .. "Strip whitespaces."
           .. "DO NOT MAKE ANYTHING UP, USE FACT ONLY."
 
-      wk.register({
-        name = '+cody',
-        c = { ':CodyToggle<cr>', '[C]ody [T]oggle' },
-        r = { ':CodyRestart<CR>', '[C]ody [R]estart' },
-        C = { ':CodyChat<CR>', '[C]ody [C]hat' },
-        R = { ':CodyChat!<CR>', '[C]ody chat [R]eset' },
-        t = { ':CodyTask ', '[C]ody [T]ask Create' },
-        v = { ':CodyTaskView<CR>', '[C]ody Task [V]iew' },
-        a = { ':CodyTaskAccept<CR>', '[C]ody Task [A]ccept' },
-        p = { ':CodyTaskPrev<CR>', '[C]ody Task [P]revious' },
-        n = { ':CodyTaskNext<CR>', '[C]ody Task [N]ext' },
-        -- Custom stuff
-        d = { ":CodyTask " .. doc_msg .. "<CR>", "[C]ody [d]ocumentation Generate" },
-        D = { search_diagnostics_cody, "[C]ody [D]iagnostic Search" },
-        -- Steal stuff from https://github.com/undg/.dot/blob/aed6fb4b2a11463d8004a5b8c384bf07df4e4324/vim/.config/nvim/lua/plugins/sg.lua
-        -- a = {
-        --   name = 'automation',
-        --   s = { ai.text.proofread.get, ai.text.proofread.desc },
-        --   r = { ai.readme.body.get, ai.readme.body.desc },
-        --   p = { ai.pull_request.description.get, ai.pull_request.description.desc },
-        --   g = {
-        --     name = 'git',
-        --     C = { ai.commit.open_with_message.get, ai.commit.open_with_message.desc },
-        --     c = { ai.commit.message.get, ai.commit.message.desc },
-        --     t = { ai.commit.title.get, ai.commit.title.desc },
-        --   },
-        -- },
-      }, { prefix = '<leader>C', mode = 'n' })
+      wk.add({
+        {
+          mode = { "n" },
+          { "<leader>CC", ":CodyChat<CR>",                   desc = "[C]ody [C]hat" },
+          { "<leader>CD", search_diagnostics_cody,           desc = "[C]ody [D]iagnostic Search" },
+          { "<leader>CR", ":CodyChat!<CR>",                  desc = "[C]ody chat [R]eset" },
+          { "<leader>Ca", ":CodyTaskAccept<CR>",             desc = "[C]ody Task [A]ccept" },
+          { "<leader>Cc", ":CodyToggle<cr>",                 desc = "[C]ody [T]oggle" },
+          { "<leader>Cd", ":CodyTask " .. doc_msg .. "<CR>", desc = "[C]ody [d]ocumentation Generate" },
+          { "<leader>Cn", ":CodyTaskNext<CR>",               desc = "[C]ody Task [N]ext" },
+          { "<leader>Cp", ":CodyTaskPrev<CR>",               desc = "[C]ody Task [P]revious" },
+          { "<leader>Cr", ":CodyRestart<CR>",                desc = "[C]ody [R]estart" },
+          { "<leader>Ct", ":CodyTask ",                      desc = "[C]ody [T]ask Create" },
+          { "<leader>Cv", ":CodyTaskView<CR>",               desc = "[C]ody Task [V]iew" }
+        },
+        {
+          mode = { "v" },
+          { "<leader>C",  group = "cody" },
+          { "<leader>CD", search_diagnostics_cody,           desc = "[C]ody [D]iagnostic Search",      silent = false },
+          { "<leader>Ca", ":CodyAsk ",                       desc = "[C]ody [A]sk",                    silent = false },
+          { "<leader>Cd", ":CodyTask " .. doc_msg .. "<CR>", desc = "[C]ody [d]ocumentation Generate", silent = false },
+          { "<leader>Ct", ":CodyTask ",                      desc = "[C]ody [T]ask Create",            silent = false },
+        },
+      }
+      )
 
-      wk.register({
-        name = '+cody',
-        a = { ':CodyAsk ', '[C]ody [A]sk' },
-        t = { ':CodyTask ', '[C]ody [T]ask Create' },
-        -- Custom stuff
-        d = { ":CodyTask " .. doc_msg .. "<CR>", "[C]ody [d]ocumentation Generate" },
-        D = { search_diagnostics_cody, "[C]ody [D]iagnostic Search" },
-      }, { prefix = '<leader>C', mode = 'v', silent = false })
+      -- wk.register({
+      --   name = '+cody',
+      --   c = { ':CodyToggle<cr>', '[C]ody [T]oggle' },
+      --   r = { ':CodyRestart<CR>', '[C]ody [R]estart' },
+      --   C = { ':CodyChat<CR>', '[C]ody [C]hat' },
+      --   R = { ':CodyChat!<CR>', '[C]ody chat [R]eset' },
+      --   t = { ':CodyTask ', '[C]ody [T]ask Create' },
+
+      --   a = { ':CodyTaskAccept<CR>', '[C]ody Task [A]ccept' },
+      --   p = { ':CodyTaskPrev<CR>', '[C]ody Task [P]revious' },
+      --   n = { ':CodyTaskNext<CR>', '[C]ody Task [N]ext' },
+      --   -- Custom stuff
+      --   d = { ":CodyTask " .. doc_msg .. "<CR>", "[C]ody [d]ocumentation Generate" },
+      --   D = { search_diagnostics_cody, "[C]ody [D]iagnostic Search" },
+      --   -- Steal stuff from https://github.com/undg/.dot/blob/aed6fb4b2a11463d8004a5b8c384bf07df4e4324/vim/.config/nvim/lua/plugins/sg.lua
+      --   -- a = {
+      --   --   name = 'automation',
+      --   --   s = { ai.text.proofread.get, ai.text.proofread.desc },
+      --   --   r = { ai.readme.body.get, ai.readme.body.desc },
+      --   --   p = { ai.pull_request.description.get, ai.pull_request.description.desc },
+      --   --   g = {
+      --   --     name = 'git',
+      --   --     C = { ai.commit.open_with_message.get, ai.commit.open_with_message.desc },
+      --   --     c = { ai.commit.message.get, ai.commit.message.desc },
+      --   --     t = { ai.commit.title.get, ai.commit.title.desc },
+      --   --   },
+      --   -- },
+      -- }, { prefix = '<leader>C', mode = 'n' })
+
+      -- wk.register({
+      --   name = '+cody',
+      --   a = { ':CodyAsk ', '[C]ody [A]sk' },
+      --   t = { ':CodyTask ', '[C]ody [T]ask Create' },
+      --   -- Custom stuff
+      --   d = { ":CodyTask " .. doc_msg .. "<CR>", "[C]ody [d]ocumentation Generate" },
+      --   D = { search_diagnostics_cody, "[C]ody [D]iagnostic Search" },
+      -- }, { prefix = '<leader>C', mode = 'v', silent = false })
     end,
     dependencies = { "nvim-lua/plenary.nvim", --[[ "nvim-telescope/telescope.nvim ]] },
 
@@ -310,9 +336,9 @@ return {
     "folke/tokyonight.nvim",
     config = function()
       require("tokyonight").setup({
-         on_highlights = function(hl, c)
+        on_highlights = function(hl, c)
           hl.CursorLineNr = { fg = c.dark5 } -- # Use the old color. I don't like the orange
-          end,
+        end,
       })
       vim.cmd("colorscheme tokyonight-night")
     end
