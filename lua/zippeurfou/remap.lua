@@ -84,6 +84,7 @@ end, "Previous todo comment")
 map("n", "<leader>Tt", "<cmd>TodoTelescope<CR>", "Todo")
 -- Git stuff
 map("n", "<leader>gc", "<cmd>Telescope conventional_commits<cr>", "[C]onventional Commit")
+map("n", "<leader>O", "<CMD>Oil<CR>",  "Oil" )
 vim.api.nvim_create_user_command("DiffviewToggle", function(e)
   local view = require("diffview.lib").get_current_view()
 
@@ -115,4 +116,5 @@ map('n', '<leader>u', function()
     vim.cmd("wincmd l")
   end
 end, '[U]nsaved Changes DiffView')
-map("n", "<leader>O", "<CMD>Oil<CR>", { desc = "Oil" })
+-- screenshot stuff
+-- map("v", "<leader>S", "<CMD>SSSelected<CR>", { desc = "Screenshot" })

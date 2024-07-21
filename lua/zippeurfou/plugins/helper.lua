@@ -70,4 +70,19 @@ return {
     "iamcco/markdown-preview.nvim",
     config = function() vim.fn["mkdp#util#install"]() end,
   },
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    keys = {
+      { "<leader>S", "<cmd>CodeSnap<cr>",     mode = "x", desc = "Screenshot Clipboard" },
+      { "<leader>s", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Sreenshot File" },
+    },
+    opts = {
+      save_path = "~/Code Screenshots",
+      has_breadcrumbs = false,
+      bg_theme = "grape",
+      watermark = "",
+      mac_window_bar = false,
+    }
+  },
 }
